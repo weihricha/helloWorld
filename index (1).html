@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.28/"></script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+  <script>
+    require([
+      "esri/Map",
+      "esri/layers/FeatureLayer",
+      "esri/views/MapView"
+    ], function(Map, FeatureLayer, MapView) {
+      const url = "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Butterfly_Map_WEB_WFL1/FeatureServer";
+       const template = {
+        title: "{CommonName}",
+        content: ""
+      };
+      const renderer = {
+        type: "simple",
+        symbol: {
+          type: "simple-marker",
+          color: "green",
+          outline: {
+            color: "white"
+          }
+        }
+      };
+
+      const featureLayer = new FeatureLayer({
+        url: url,
+        renderer: renderer,
+        popupTemplate: template
+      });
+
+      const map = new Map({
+        basemap: "gray-vector",
+        layers: [featureLayer]
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        center: [-168, 46],
+        zoom: 2,
+        map: map
+      });
+    });
+  </script>
+</body>
+</html>
