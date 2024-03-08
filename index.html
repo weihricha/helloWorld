@@ -22,10 +22,10 @@
       "esri/layers/FeatureLayer",
       "esri/views/MapView"
     ], function(Map, FeatureLayer, MapView) {
-      const url = "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/MegaCities_AGW/FeatureServer";
+      const url = "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Butterfly_Map_WEB_WFL1/FeatureServer";
        const template = {
-        title: "{Place}",
-        content: "Population in 2015- {Pop_2015} in millions"
+        title: "{CommonName}",
+        content: ""
       };
       const renderer = {
         type: "simple",
